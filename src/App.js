@@ -25,7 +25,7 @@ class App extends Component {
 
   queryApi = () => {
     const query = this.state.query;
-    const url = `https://movie-quotes-app.herokuapp.com/api/v1/quotes?content=${query}`;
+    const url = `https://movie-quotes-app.herokuapp.com/api/v1/quotes?multiple=${query}`;
 
     fetch(url, { headers: { Authorization: 'Token token=3dvoD6MQYeqvH0HHa3AfXAtt' } })
       .then(results => results.json())
