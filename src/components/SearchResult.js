@@ -1,9 +1,9 @@
 import React from 'react';
 
-// "functional" component
+// "functional" component (no state, no life-cycle, no `this`)
 const SearchResult = (props) => {
 
-  const {content, year, rating, movie, character, actor, image_large_url, image_thumb_url } = props.quote;
+  const {content, year, movie, character, actor, image_large_url, image_thumb_url } = props.quote;
 
   return (
     <div className="col-lg-4">

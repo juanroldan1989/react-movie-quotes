@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchResult from './SearchResult';
+import Pagination from './Pagination';
 
 // "class" component (state, `this.props`, extends from `Component`)
 class SearchResults extends Component {
@@ -17,6 +18,7 @@ class SearchResults extends Component {
             <SearchResult key={quote.content.length} quote={quote} />
           ))}
         </div>
+        <Pagination previousPage={this.props.previousPage} nextPage={this.props.nextPage} />
       </React.Fragment>
     )
   }
