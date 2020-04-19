@@ -4,15 +4,34 @@ import './App.css';
 
 class App extends Component {
 
+  // initial state for `query` is empty String
+  // initial state for `quotes` is empty Array
   state = {
-    query : 'something'
+    query : '',
+    quotes: []
   }
 
-  // 'data' searched by to comunicate along other components
+  // function called whenever search form is submitted
   searchQuery = (data) => {
     console.log(data);
 
-    this.setState({ query: data })
+    this.setState({
+      query: data
+    }, () => { // callbacks
+      this.queryApi();
+    })
+  }
+
+  queryApi = () => {
+    const query = this.state.query;
+    const url = `https://movie-quotes-app.herokuapp.com/api/v1/quotes?content=${query}`;
+
+    console.log(url);
+
+    fetch(url, { headers: { Authorization: 'Token token=3dvoD6MQYeqvH0HHa3AfXAtt' } })
+      .then(results => results.json())
+      .then(results => this.setState({ quotes: results }))
+      // .then(results => console.log(results))
   }
 
   render() {
