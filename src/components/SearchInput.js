@@ -9,6 +9,7 @@ class SearchInput extends Component {
 
     // get search input value
     const value = this.searchRef.current.value;
+    console.log("SUBMIT: ", value);
 
     // send value to parent component to comunicate it over other components
     this.props.searchQuery(value);

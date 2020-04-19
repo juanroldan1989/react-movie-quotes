@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchInput from './components/SearchInput';
+import SearchResults from './components/SearchResults';
 import './App.css';
 
 class App extends Component {
@@ -13,7 +14,7 @@ class App extends Component {
 
   // function called whenever search form is submitted
   searchQuery = (data) => {
-    console.log(data);
+    console.log("SearchQuery: ", data);
 
     this.setState({
       query: data
@@ -25,8 +26,6 @@ class App extends Component {
   queryApi = () => {
     const query = this.state.query;
     const url = `https://movie-quotes-app.herokuapp.com/api/v1/quotes?content=${query}`;
-
-    console.log(url);
 
     fetch(url, { headers: { Authorization: 'Token token=3dvoD6MQYeqvH0HHa3AfXAtt' } })
       .then(results => results.json())
@@ -45,7 +44,7 @@ class App extends Component {
             <SearchInput searchQuery={this.searchQuery} />
           </div>
 
-          {this.state.query}
+          <SearchResults quotes={this.state.quotes} />
         </div>
       </div>
     )
