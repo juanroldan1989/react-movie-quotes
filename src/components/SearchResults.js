@@ -18,7 +18,10 @@ class SearchResults extends Component {
             <SearchResult key={quote.content.length} quote={quote} />
           ))}
         </div>
-        <Pagination previousPage={this.props.previousPage} nextPage={this.props.nextPage} />
+        <hr/>
+        <div className="col-12 row justify-content-center">
+          <Pagination previousPage={this.props.previousPage} nextPage={this.props.nextPage} />
+        </div>
       </React.Fragment>
     )
   }

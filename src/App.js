@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SearchingBar from './components/SearchingBar';
 import SearchInput from './components/SearchInput';
 import SearchResults from './components/SearchResults';
 import './App.css';
@@ -9,6 +10,7 @@ class App extends Component {
   // initial state for `quotes` is empty Array
   state = {
     query : '',
+    searching: false,
     quotes: [],
     page: 1
   }
@@ -57,14 +59,38 @@ class App extends Component {
     header.scrollIntoView('smooth', 'start');
   }
 
+  searchStarted = () => {
+    console.log("searchStarted!");
+    this.setState({ searching: true });
+
+    const searchingBar = document.querySelector('#searchingBar');
+    searchingBar.style.display = 'block';
+
+    const resultsContainer = document.querySelector('#resultsContainer');
+    resultsContainer.style.display = 'none';
+  }
+
+  searchCompleted = () => {
+    console.log("searchCompleted!");
+    this.setState({ searching: false });
+
+    const searchingBar = document.querySelector('#searchingBar');
+    searchingBar.style.display = 'none';
+
+    const resultsContainer = document.querySelector('#resultsContainer');
+    resultsContainer.style.display = 'block';
+  }
+
   queryApi = () => {
     const query = this.state.query;
     const page = this.state.page;
     const url = `https://movie-quotes-app.herokuapp.com/api/v1/quotes?multiple=${query}&page=${page}`;
 
+    this.searchStarted();
     fetch(url, { headers: { Authorization: 'Token token=3dvoD6MQYeqvH0HHa3AfXAtt' } })
       .then(results => results.json())
       .then(results => this.setState({ quotes: results }))
+      .then(results => this.searchCompleted())
       // .then(results => console.log(results))
   }
 
@@ -82,11 +108,16 @@ class App extends Component {
           </div>
 
           <div className="row justify-content-center">
-            <SearchResults
-              quotes={this.state.quotes}
-              previousPage={this.previousPage}
-              nextPage={this.nextPage}
-            />
+            <div id="searchingBar">
+              <SearchingBar searching={this.state.searching} />
+            </div>
+            <div id="resultsContainer">
+              <SearchResults
+                quotes={this.state.quotes}
+                previousPage={this.previousPage}
+                nextPage={this.nextPage}
+              />
+            </div>
           </div>
         </div>
       </div>
