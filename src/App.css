@@ -30,7 +30,13 @@
   }
 }
 
+/* Search result item */
 .card-img-top {
   object-fit: cover;
   height: 350px;
 }
+
+.box-rating-stars {
+  margin-bottom: 10px !important;
+}
+/* Search result item */
