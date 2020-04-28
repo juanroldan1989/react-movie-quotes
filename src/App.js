@@ -17,8 +17,6 @@ class App extends Component {
 
   // function called whenever search form is submitted
   searchQuery = (data) => {
-    console.log("SearchQuery: ", data);
-
     this.setState({
       query: data
     }, () => { // callbacks
@@ -60,7 +58,6 @@ class App extends Component {
   }
 
   searchStarted = () => {
-    console.log("searchStarted!");
     this.setState({ searching: true });
 
     const searchingBar = document.querySelector('#searchingBar');
@@ -71,7 +68,6 @@ class App extends Component {
   }
 
   searchCompleted = () => {
-    console.log("searchCompleted!");
     this.setState({ searching: false });
 
     const searchingBar = document.querySelector('#searchingBar');

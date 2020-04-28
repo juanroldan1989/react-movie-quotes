@@ -9,8 +9,6 @@ class SearchResults extends Component {
 
     if (quotes.length === 0) return null;
 
-    console.log(quotes);
-
     return (
       <React.Fragment>
         <div className="col-12 row">

@@ -5,7 +5,7 @@ import QuoteImage from './QuoteImage';
 // "functional" component (no state, no life-cycle, no `this`)
 const SearchResult = (props) => {
 
-  const {content, year, movie, rating, character, actor, image_large_url, image_thumb_url } = props.quote;
+  const { content, year, movie, rating, character, actor } = props.quote;
 
   return (
     <div className="col-lg-4">
@@ -16,7 +16,6 @@ const SearchResult = (props) => {
             <h6 className="card-subtitle text-muted">{year}</h6>
           </div>
 
-          {/* <img src={image_large_url} alt={year} className="card-img-top" /> */}
           <QuoteImage quote={props.quote} />
 
           <div className="card-body">
