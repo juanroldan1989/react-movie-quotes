@@ -87,7 +87,7 @@ class App extends Component {
     const url = `https://movie-quotes-app.herokuapp.com/api/v1/quotes?multiple=${query}&page=${page}`;
 
     this.searchStarted();
-    fetch(url, { headers: { Authorization: 'Token token=3dvoD6MQYeqvH0HHa3AfXAtt' } })
+    fetch(url, { headers: { Authorization: `Token token=${process.env.REACT_APP_API_KEY}` } })
       .then(results => results.json())
       .then(results => this.setState({ quotes: results }))
       .then(results => this.searchCompleted())
