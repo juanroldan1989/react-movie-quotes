@@ -15,7 +15,7 @@ class SearchResults extends Component {
       <React.Fragment>
         <div className="col-12 row">
           {quotes.map(quote => ( 
-            <SearchResult key={quote.content.length} quote={quote} />
+            <SearchResult key={quote.id} quote={quote} />
           ))}
         </div>
         <hr/>
