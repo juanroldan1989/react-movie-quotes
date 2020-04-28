@@ -5,9 +5,32 @@ import Pagination from './Pagination';
 // "class" component (state, `this.props`, extends from `Component`)
 class SearchResults extends Component {
   displayQuotes = () => {
-    const quotes = this.props.quotes;
+    const { quotes, query, page } = this.props;
 
-    if (quotes.length === 0) return null;
+    if (query === "") return null;
+
+    if ((quotes.length === 0) && (query != "")) {
+      if (page === 1) {
+        return(
+          <React.Fragment>
+            <div className="col-12">
+              <h4>No results for "{query}"</h4>
+            </div>
+          </React.Fragment>
+        )
+      } else {
+        return(
+          <React.Fragment>
+            <div className="col-12">
+              <h4>No more results for "{query}"</h4>
+            </div>
+            <div className="col-12 row justify-content-center">
+              <Pagination onlyPreviousPage={true} previousPage={this.props.previousPage} />
+            </div>
+          </React.Fragment>
+        )
+      }
+    }
 
     return (
       <React.Fragment>
@@ -18,7 +41,7 @@ class SearchResults extends Component {
         </div>
         <hr/>
         <div className="col-12 row justify-content-center">
-          <Pagination previousPage={this.props.previousPage} nextPage={this.props.nextPage} />
+          <Pagination page={page} previousPage={this.props.previousPage} nextPage={this.props.nextPage} />
         </div>
       </React.Fragment>
     )
@@ -40,5 +63,3 @@ export default SearchResults;
 // `key` is required by React when calling the same component severa times
 // This way React can identify components faster within the `Virtual DOM`
 // `key` value has to be unique for each call
-// `key={quote.content.length}` is the only available way to make this happen
-// Ideally it would be `key={quote.id}`

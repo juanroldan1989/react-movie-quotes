@@ -110,6 +110,8 @@ class App extends Component {
             <div id="resultsContainer">
               <SearchResults
                 quotes={this.state.quotes}
+                query={this.state.query}
+                page={this.state.page}
                 previousPage={this.previousPage}
                 nextPage={this.nextPage}
               />
