@@ -1,5 +1,6 @@
 import React from 'react';
 import RatingStars from './RatingStars';
+import QuoteImage from './QuoteImage';
 
 // "functional" component (no state, no life-cycle, no `this`)
 const SearchResult = (props) => {
@@ -15,16 +16,13 @@ const SearchResult = (props) => {
             <h6 className="card-subtitle text-muted">{year}</h6>
           </div>
 
-          <img src={image_thumb_url} alt={year} className="card-img-top" />
+          {/* <img src={image_large_url} alt={year} className="card-img-top" /> */}
+          <QuoteImage quote={props.quote} />
 
           <div className="card-body">
             <RatingStars rating={parseInt(rating)} />
             <p className="card-text">"{content}"</p>
             <p className="card-text text-muted">{character.name} ({actor.name})</p>
-          </div>
-
-          <div className="card-footer text-muted">
-            <a href={image_large_url} target="_blank" className="card-link">Large image</a>
           </div>
         </div>
       </div>
