@@ -65,6 +65,9 @@ class App extends Component {
 
     const resultsContainer = document.querySelector('#resultsContainer');
     resultsContainer.style.display = 'none';
+
+    const searchButton = document.querySelector('#searchButton');
+    searchButton.disabled = true;
   }
 
   searchCompleted = () => {
@@ -75,6 +78,9 @@ class App extends Component {
 
     const resultsContainer = document.querySelector('#resultsContainer');
     resultsContainer.style.display = 'block';
+
+    const searchButton = document.querySelector('#searchButton');
+    searchButton.disabled = false;
   }
 
   queryApi = () => {
