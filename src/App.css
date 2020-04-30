@@ -1,5 +1,4 @@
 /* https://tobiasahlin.com/spinkit/ */
-
 .spinner {
   width: 80px;
   height: 80px;
@@ -29,6 +28,7 @@
     opacity: 0;
   }
 }
+/* https://tobiasahlin.com/spinkit/ */
 
 /* Search result item */
 .card-img-top {
@@ -40,3 +40,25 @@
   margin-bottom: 10px !important;
 }
 /* Search result item */
+
+/* pagination */
+.pagination {
+  margin-bottom: 60px;
+}
+/* pagination */
+
+/* footer */
+.footer {
+  position: fixed;
+  bottom: 0;
+  padding: 10px;
+  width: 100%;
+  background-color: #ecf0f1;
+  color: white;
+  text-align: center;
+}
+
+.footer a {
+  color: #212529;
+}
+/* footer */

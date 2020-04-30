@@ -124,6 +124,9 @@ class App extends Component {
             </div>
           </div>
         </div>
+        <div className="footer">
+          <a href="http://juanroldan.com.ar/#portfolio" target="_blank">juanroldan.com.ar</a>
+        </div>
       </div>
     )
   }

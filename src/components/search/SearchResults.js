@@ -24,7 +24,7 @@ class SearchResults extends Component {
             <div className="col-12">
               <h4>No more results for "{query}"</h4>
             </div>
-            <div className="col-12 row justify-content-center">
+            <div className="col-12 row justify-content-center pagination">
               <Pagination onlyPreviousPage={true} previousPage={this.props.previousPage} />
             </div>
           </React.Fragment>
@@ -39,8 +39,7 @@ class SearchResults extends Component {
             <SearchResult key={quote.id} quote={quote} />
           ))}
         </div>
-        <hr/>
-        <div className="col-12 row justify-content-center">
+        <div className="col-12 row justify-content-center pagination">
           <Pagination page={page} previousPage={this.props.previousPage} nextPage={this.props.nextPage} />
         </div>
       </React.Fragment>
