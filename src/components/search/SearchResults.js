@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import SearchResult from './SearchResult';
-import Pagination from './Pagination';
+import Pagination from '../Pagination';
 
 // "class" component (state, `this.props`, extends from `Component`)
 class SearchResults extends Component {

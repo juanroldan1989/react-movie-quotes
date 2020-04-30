@@ -1,6 +1,6 @@
 import React from 'react';
-import RatingStars from './RatingStars';
-import QuoteImage from './QuoteImage';
+import RatingStars from '../RatingStars';
+import QuoteImage from '../QuoteImage';
 
 // "functional" component (no state, no life-cycle, no `this`)
 const SearchResult = (props) => {
