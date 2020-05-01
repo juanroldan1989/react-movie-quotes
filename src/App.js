@@ -102,10 +102,17 @@ class App extends Component {
         <div className="app container">
           <div className="jumbotron">
             <h1 className="display-3">Movie Quotes!</h1>
-            <p className="lead">ReactJS application interacting with
-              <a href="https://juanroldan.com.ar/movie-quotes-api" target="_blank"> MovieQuotes API</a>
-            </p>
-            <hr className="my-4"></hr>
+            <div className="d-flex justify-content-between">
+              <p className="lead">React JS application interacting with&nbsp;
+                <a href="https://juanroldan.com.ar/movie-quotes-api" target="_blank">MovieQuotes API</a>
+              </p>
+              <p className="lead">
+                <a href="https://github.com/juanroldan1989/react-movie-quotes" target="_blank">
+                  source <i className="fa fa-github" aria-hidden="true"></i>
+                </a>
+              </p>
+            </div>
+            <hr/>
             <SearchInput searchQuery={this.searchQuery} />
           </div>
 
