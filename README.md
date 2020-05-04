@@ -1,6 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="left">
+  <a href="https://github.com/juanroldan1989/ionic-movie-quotes">
+    <img width="136" src="https://github.com/juanroldan1989/ionic-movie-quotes/raw/master/src/assets/imgs/logo.png" alt="movie_quotes_logo" />
+    <img width="136" src="https://github.com/juanroldan1989/ionic-movie-quotes/raw/master/src/assets/imgs/plus-logo.jpg" alt="plus_logo" />
+    <img width="136" src="https://github.com/juanroldan1989/react-movie-quotes/raw/master/public/react-js-logo.png" alt="react_js_logo" />
+  </a>
+</div>
 
-## Available Scripts
+# MovieQuotes React JS App
+
+React JS app interacting with [MovieQuotes API](https://juanroldan.com.ar/movie-quotes-api)
+
+## Development
 
 In the project directory, you can run:
 
@@ -66,3 +76,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Q&A
+
+Questions or problems? Please post them on the [issue tracker](https://github.com/juanroldan1989/react-movie-quotes/issues). You can contribute changes by forking the project and submitting a pull request.
