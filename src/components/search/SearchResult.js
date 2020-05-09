@@ -3,8 +3,9 @@ import RatingStars from '../RatingStars';
 import QuoteImage from '../QuoteImage';
 
 // "functional" component (no state, no life-cycle, no `this`)
+// Also called "dumb", "stateless" or "presentational" components,
+// because they just take data from `props` and present it
 const SearchResult = (props) => {
-
   const { content, year, movie, rating, character, actor } = props.quote;
 
   return (

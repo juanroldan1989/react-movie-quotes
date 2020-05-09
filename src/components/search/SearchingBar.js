@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class SearchingBar extends Component {
-  displayBar = () => {
-    if (this.props.searching === false) return null;
+const SearchingBar = (props) => {
+  let displayBar = () => {
+    if (props.searching === false) return null;
 
     return (
       <React.Fragment>
@@ -11,13 +11,11 @@ class SearchingBar extends Component {
     )
   }
 
-  render() {
-    return (
-      <React.Fragment>
-        {this.displayBar()}
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      {displayBar()}
+    </React.Fragment>
+  )
 }
 
 export default SearchingBar;

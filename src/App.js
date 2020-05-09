@@ -4,10 +4,16 @@ import SearchInput from './components/search/SearchInput';
 import SearchResults from './components/search/SearchResults';
 import './App.css';
 
+// "class" component (state, `this.props`, extends from `Component`)
+// Also called "container", "stateful" or "smart" components,
+// because they handle application's states
+
+// Ideally there should be a few "smart" components
+// Having lots of "smart" components could lead to spaghetti code
+// and increasing chances of the application becoming unstable
 class App extends Component {
 
-  // initial state for `query` is empty String
-  // initial state for `quotes` is empty Array
+  // initial states
   state = {
     query : '',
     searching: false,

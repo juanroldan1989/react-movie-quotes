@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SearchResult from './SearchResult';
 import Pagination from '../Pagination';
 
-// "class" component (state, `this.props`, extends from `Component`)
-class SearchResults extends Component {
-  displayQuotes = () => {
-    const { quotes, query, page } = this.props;
+const SearchResults = (props) => {
+  const displayQuotes = () => {
+    const { quotes, query, page } = props;
 
     if (query === "") return null;
 
@@ -25,7 +24,7 @@ class SearchResults extends Component {
               <h4>No more results for "{query}"</h4>
             </div>
             <div className="col-12 row justify-content-center pagination">
-              <Pagination onlyPreviousPage={true} previousPage={this.props.previousPage} />
+              <Pagination onlyPreviousPage={true} previousPage={props.previousPage} />
             </div>
           </React.Fragment>
         )
@@ -40,25 +39,24 @@ class SearchResults extends Component {
           ))}
         </div>
         <div className="col-12 row justify-content-center pagination">
-          <Pagination page={page} previousPage={this.props.previousPage} nextPage={this.props.nextPage} />
+          <Pagination page={page} previousPage={props.previousPage} nextPage={props.nextPage} />
         </div>
       </React.Fragment>
     )
   }
 
-  render() {
-    return (
-      <React.Fragment> 
-        {this.displayQuotes()}
-      </React.Fragment>
-    );
-  }
+  return (
+    <React.Fragment>
+      {displayQuotes()}
+    </React.Fragment>
+  );
 }
 
 export default SearchResults;
 
 // <React.Fragment> used when no extra HTML tag is needed
 
-// `key` is required by React when calling the same component severa times
-// This way React can identify components faster within the `Virtual DOM`
+// `key` is required by React when calling the same component several times
 // `key` value has to be unique for each call
+// This way React identifies components faster within the `Virtual DOM`
+// This way React knows `which` elements to re-render and which not
