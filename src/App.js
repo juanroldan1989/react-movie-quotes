@@ -30,6 +30,13 @@ class App extends Component {
     })
   }
 
+  // function called whenever search query changes
+  setPage = (page) => {
+    this.setState({
+      page: page
+    })
+  }
+
   previousPage = () => {
     let page = this.state.page;
 
@@ -119,7 +126,7 @@ class App extends Component {
               </p>
             </div>
             <hr/>
-            <SearchInput searchQuery={this.searchQuery} />
+            <SearchInput searchQuery={this.searchQuery} setPage={this.setPage} />
           </div>
 
           <div className="row justify-content-center">

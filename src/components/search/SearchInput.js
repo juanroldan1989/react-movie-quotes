@@ -14,6 +14,9 @@ const SearchInput = (props) => {
   }
 
   let searchButtonHandler = (e) => {
+    // whenever search query changes, page is set to `1`
+    props.setPage(1);
+
     let value = e.target.value;
     let disabled = (value === "");
     let button = document.querySelector('#searchButton');
