@@ -7,9 +7,10 @@ import QuoteImage from '../QuoteImage';
 // because they just take data from `props` and present it
 const SearchResult = (props) => {
   const { content, year, movie, rating, character, actor } = props.quote;
+  const itemClassName = props.singleResult === true ? "col-lg-12" : "col-lg-4";
 
   return (
-    <div className="col-lg-4">
+    <div className={itemClassName}>
       <div className="bs-component">
         <div className="card mb-3">
           <div className="card-body">

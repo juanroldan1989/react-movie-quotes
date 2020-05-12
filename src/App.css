@@ -30,6 +30,12 @@
 }
 /* https://tobiasahlin.com/spinkit/ */
 
+/* Search results */
+#resultsContainer .col-12.row {
+  padding-right: 0px !important;
+}
+/* Search results */
+
 /* Search result item */
 .card-img-top {
   object-fit: cover;

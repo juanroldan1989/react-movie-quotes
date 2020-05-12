@@ -5,10 +5,12 @@ import Pagination from '../Pagination';
 const SearchResults = (props) => {
   const displayQuotes = () => {
     const { quotes, query, page } = props;
+    const quotesCounter = quotes.length;
+    const singleResult = quotesCounter === 1;
 
     if (query === "") return null;
 
-    if ((quotes.length === 0) && (query != "")) {
+    if ((quotesCounter === 0) && (query != "")) {
       if (page === 1) {
         return(
           <React.Fragment>
@@ -35,7 +37,7 @@ const SearchResults = (props) => {
       <React.Fragment>
         <div className="col-12 row">
           {quotes.map(quote => ( 
-            <SearchResult key={quote.id} quote={quote} />
+            <SearchResult key={quote.id} quote={quote} singleResult={singleResult} />
           ))}
         </div>
         <div className="col-12 row justify-content-center pagination">
