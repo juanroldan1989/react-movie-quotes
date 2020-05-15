@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import SearchingBar from './components/search/SearchingBar';
 import SearchInput from './components/search/SearchInput';
 import SearchResults from './components/search/SearchResults';
+import styled from 'styled-components';
 import './App.css';
+
+const SearchingBarDiv = styled.div`
+  display: ${props => props.searching ? 'block' : 'none'};
+`;
 
 // "class" component (state, `this.props`, extends from `Component`)
 // Also called "container", "stateful" or "smart" components,
@@ -73,9 +77,6 @@ class App extends Component {
   searchStarted = () => {
     this.setState({ searching: true });
 
-    const searchingBar = document.querySelector('#searchingBar');
-    searchingBar.style.display = 'block';
-
     const resultsContainer = document.querySelector('#resultsContainer');
     resultsContainer.style.display = 'none';
 
@@ -85,9 +86,6 @@ class App extends Component {
 
   searchCompleted = () => {
     this.setState({ searching: false });
-
-    const searchingBar = document.querySelector('#searchingBar');
-    searchingBar.style.display = 'none';
 
     const resultsContainer = document.querySelector('#resultsContainer');
     resultsContainer.style.display = 'block';
@@ -130,9 +128,9 @@ class App extends Component {
           </div>
 
           <div className="row justify-content-center">
-            <div id="searchingBar">
-              <SearchingBar searching={this.state.searching} />
-            </div>
+            <SearchingBarDiv searching={this.state.searching}>
+              <div className="spinner"></div>
+            </SearchingBarDiv>
             <div id="resultsContainer">
               <SearchResults
                 quotes={this.state.quotes}
