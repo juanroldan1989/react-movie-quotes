@@ -4,6 +4,13 @@ import SearchResults from './components/search/SearchResults';
 import styled from 'styled-components';
 import './App.css';
 
+const ResultsContainerDiv = styled.div`
+  display: ${props => props.searching ? 'none' : 'block'};
+  .col-12.row {
+    padding-right: 0px !important;
+  }
+`;
+
 const SearchingBarDiv = styled.div`
   display: ${props => props.searching ? 'block' : 'none'};
 `;
@@ -77,18 +84,12 @@ class App extends Component {
   searchStarted = () => {
     this.setState({ searching: true });
 
-    const resultsContainer = document.querySelector('#resultsContainer');
-    resultsContainer.style.display = 'none';
-
     const searchButton = document.querySelector('#searchButton');
     searchButton.disabled = true;
   }
 
   searchCompleted = () => {
     this.setState({ searching: false });
-
-    const resultsContainer = document.querySelector('#resultsContainer');
-    resultsContainer.style.display = 'block';
 
     const searchButton = document.querySelector('#searchButton');
     searchButton.disabled = false;
@@ -124,14 +125,19 @@ class App extends Component {
               </p>
             </div>
             <hr/>
-            <SearchInput searchQuery={this.searchQuery} setPage={this.setPage} />
+            <SearchInput
+              searchQuery={this.searchQuery}
+              setPage={this.setPage}
+              searching={this.state.searching}
+            />
           </div>
 
           <div className="row justify-content-center">
             <SearchingBarDiv searching={this.state.searching}>
               <div className="spinner"></div>
             </SearchingBarDiv>
-            <div id="resultsContainer">
+
+            <ResultsContainerDiv searching={this.state.searching}>
               <SearchResults
                 quotes={this.state.quotes}
                 query={this.state.query}
@@ -139,7 +145,7 @@ class App extends Component {
                 previousPage={this.previousPage}
                 nextPage={this.nextPage}
               />
-            </div>
+            </ResultsContainerDiv>
           </div>
         </div>
         <div className="footer">
