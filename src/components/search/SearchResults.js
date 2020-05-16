@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchResult from './SearchResult';
 import Pagination from '../Pagination';
+import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 
 const SearchResults = (props) => {
   const displayQuotes = () => {
@@ -37,7 +38,9 @@ const SearchResults = (props) => {
       <React.Fragment>
         <div className="col-12 row">
           {quotes.map(quote => ( 
-            <SearchResult key={quote.id} quote={quote} singleResult={singleResult} />
+            <ErrorBoundary key={quote.id}>
+              <SearchResult quote={quote} singleResult={singleResult} />
+            </ErrorBoundary>
           ))}
         </div>
         <div className="col-12 row justify-content-center pagination">
