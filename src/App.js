@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import SearchInput from './components/search/SearchInput';
 import SearchResults from './components/search/SearchResults';
 import styled from 'styled-components';
+import AppInfo from './components/page/AppInfo';
+import AppFooter from './components/page/AppFooter';
 import './App.css';
 
-const ResultsContainerDiv = styled.div`
+const SearchResultsDiv = styled.div`
   display: ${props => props.searching ? 'none' : 'block'};
   .col-12.row {
     padding-right: 0px !important;
@@ -113,17 +115,7 @@ class App extends Component {
       <div className="App">
         <div className="app container">
           <div className="jumbotron">
-            <h1 className="display-3">Movie Quotes!</h1>
-            <div className="d-flex justify-content-between">
-              <p className="lead">React JS application interacting with&nbsp;
-                <a href="https://juanroldan.com.ar/movie-quotes-api" target="_blank">MovieQuotes API</a>
-              </p>
-              <p className="lead">
-                <a href="https://github.com/juanroldan1989/react-movie-quotes" target="_blank">
-                  source <i className="fa fa-github" aria-hidden="true"></i>
-                </a>
-              </p>
-            </div>
+            <AppInfo/>
             <hr/>
             <SearchInput
               searchQuery={this.searchQuery}
@@ -137,7 +129,7 @@ class App extends Component {
               <div className="spinner"></div>
             </SearchingBarDiv>
 
-            <ResultsContainerDiv searching={this.state.searching}>
+            <SearchResultsDiv searching={this.state.searching}>
               <SearchResults
                 quotes={this.state.quotes}
                 query={this.state.query}
@@ -145,12 +137,10 @@ class App extends Component {
                 previousPage={this.previousPage}
                 nextPage={this.nextPage}
               />
-            </ResultsContainerDiv>
+            </SearchResultsDiv>
           </div>
         </div>
-        <div className="footer">
-          <a href="http://juanroldan.com.ar/#portfolio" target="_blank">juanroldan.com.ar</a>
-        </div>
+        <AppFooter/>
       </div>
     )
   }

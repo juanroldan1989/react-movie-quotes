@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchResult from './SearchResult';
-import Pagination from '../Pagination';
+import Pagination from '../page/Pagination';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
 
 const SearchResults = (props) => {
@@ -13,7 +13,7 @@ const SearchResults = (props) => {
 
     if ((quotesCounter === 0) && (query != "")) {
       if (page === 1) {
-        return(
+        return (
           <React.Fragment>
             <div className="col-12">
               <h4>No results for "{query}"</h4>
@@ -21,7 +21,7 @@ const SearchResults = (props) => {
           </React.Fragment>
         )
       } else {
-        return(
+        return (
           <React.Fragment>
             <div className="col-12">
               <h4>No more results for "{query}"</h4>

@@ -1,6 +1,6 @@
 import React from 'react';
-import RatingStars from '../RatingStars';
-import QuoteImage from '../QuoteImage';
+import RatingStars from '../quote/RatingStars';
+import QuoteImage from '../quote/QuoteImage';
 
 // "functional" component (no state, no life-cycle, no `this`)
 // Also called "dumb", "stateless" or "presentational" components,
