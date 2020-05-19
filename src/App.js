@@ -115,7 +115,7 @@ class App extends Component {
       <div className="App">
         <div className="app container">
           <div className="jumbotron">
-            <AppInfo/>
+            <AppInfo searching={this.state.searching} />
             <hr/>
             <SearchInput
               searchQuery={this.searchQuery}
