@@ -41,9 +41,27 @@ const AppInfo = (props) => {
   )
 };
 
-export default AppInfo;
+export default React.memo(AppInfo);
 
 // `useEffect`
 // `ComponentDidMount` and `ComponentDidUpdate` (`class-based` component events) combined in 1 effect
 // Applies for `functional` components only since within functional components
 // we don't have a lifecycle in the same way we have for `class-based` components
+
+// `React.memo`
+// Optimization for `functional` components.
+// React will memoize, store a snapshot of this component, and it will only change
+// whenever its props/inputs change, otherwise it will remain untouched.
+// Whenever a `parent` component wants to update this component,
+// React will give back that stored snapshot.
+// It's still an extra validation React needs to do, it doesn't come for free.
+// Not every component should have this extra validation
+
+// `shouldComponentUpdate`
+// Optimization for `class-based` components.
+// It's still an extra validation React needs to do, it doesn't come for free.
+// Not every component should have this extra validation
+
+// `React.memo` & `shouldComponentUpdate`
+// For all/most scenarios where a `parent` component will need to update this component,
+// we should NOT implement this validation.

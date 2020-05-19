@@ -34,6 +34,25 @@ class App extends Component {
     page: 1
   }
 
+  //// `class-based` component events /////
+  componentDidMount() {
+    console.log('[App.js] componentDidMount');
+  }
+
+  // Whenever something changes within this component,
+  // React updates its entire associated tree, it does not actually update the real DOM,
+  // it just runs validations to make sure this component should be re-rendered or not,
+  // in case it should not be re-rendered we can improve performance for this component
+  shouldComponentUpdate() {
+    console.log('[App.js] shouldComponentUpdate');
+    return true;
+  }
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate');
+  }
+  //// `class-based` component events ////
+
   // function called whenever search form is submitted
   searchQuery = (data) => {
     this.setState({
