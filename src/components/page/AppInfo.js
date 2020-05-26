@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
 const AppInfo = (props) => {
 
@@ -39,6 +40,11 @@ const AppInfo = (props) => {
       </div>
     </React.Fragment>
   )
+};
+
+// Helps developers to use components correctly by using the right type of props
+AppInfo.propTypes = {
+  searching: PropTypes.bool
 };
 
 export default React.memo(AppInfo);

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const SearchInput = (props) => {
   let searchRef = React.createRef();
@@ -36,5 +37,10 @@ const SearchInput = (props) => {
     </form>
   );
 }
+
+SearchInput.propTypes = {
+  searchQuery: PropTypes.func,
+  setPage: PropTypes.func
+};
 
 export default SearchInput;

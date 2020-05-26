@@ -1,18 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Pagination = (props) => {
 
-  const { page, onlyPreviousPage } = props;
+  const { page, previousPage, nextPage, onlyPreviousPage } = props;
 
   const previousButton = () => {
     return (
-      <button onClick={props.previousPage} type="button" className="btn btn-info mr-1">&larr; Previous</button>
+      <button onClick={previousPage} type="button" className="btn btn-info mr-1">&larr; Previous</button>
     )
   }
 
   const nextButton = () => {
     return (
-      <button onClick={props.nextPage} type="button" className="btn btn-info">Next &rarr;</button>
+      <button onClick={nextPage} type="button" className="btn btn-info">Next &rarr;</button>
     )
   }
 
@@ -30,5 +31,12 @@ const Pagination = (props) => {
     )
   }
 }
+
+Pagination.propTypes = {
+  page: PropTypes.number,
+  previousPage: PropTypes.func,
+  nextPage: PropTypes.func,
+  onlyPreviousPage: PropTypes.bool
+};
 
 export default Pagination;

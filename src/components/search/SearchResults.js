@@ -2,10 +2,11 @@ import React from 'react';
 import SearchResult from './SearchResult';
 import Pagination from '../page/Pagination';
 import ErrorBoundary from '../errorBoundary/ErrorBoundary';
+import PropTypes from 'prop-types';
 
 const SearchResults = (props) => {
   const displayQuotes = () => {
-    const { quotes, query, page } = props;
+    const { quotes, query, page, previousPage, nextPage } = props;
     const quotesCounter = quotes.length;
     const singleResult = quotesCounter === 1;
 
@@ -27,7 +28,7 @@ const SearchResults = (props) => {
               <h4>No more results for "{query}"</h4>
             </div>
             <div className="col-12 row justify-content-center pagination">
-              <Pagination onlyPreviousPage={true} previousPage={props.previousPage} />
+              <Pagination onlyPreviousPage={true} previousPage={previousPage} />
             </div>
           </React.Fragment>
         )
@@ -44,7 +45,7 @@ const SearchResults = (props) => {
           ))}
         </div>
         <div className="col-12 row justify-content-center pagination">
-          <Pagination page={page} previousPage={props.previousPage} nextPage={props.nextPage} />
+          <Pagination page={page} previousPage={previousPage} nextPage={nextPage} />
         </div>
       </React.Fragment>
     )
@@ -56,6 +57,14 @@ const SearchResults = (props) => {
     </React.Fragment>
   );
 }
+
+SearchResults.propTypes = {
+  quotes: PropTypes.array,
+  query: PropTypes.string,
+  page: PropTypes.number,
+  previousPage: PropTypes.func,
+  nextPage: PropTypes.func
+};
 
 export default SearchResults;
 

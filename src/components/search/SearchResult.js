@@ -1,6 +1,7 @@
 import React from 'react';
 import RatingStars from '../quote/RatingStars';
 import QuoteImage from '../quote/QuoteImage';
+import PropTypes from 'prop-types';
 
 // "functional" component (no state, no life-cycle, no `this`)
 // Also called "dumb", "stateless" or "presentational" components,
@@ -30,5 +31,10 @@ const SearchResult = (props) => {
     </div>
   )
 }
+
+SearchResult.propTypes = {
+  quote: PropTypes.object,
+  singleResult: PropTypes.bool
+};
 
 export default SearchResult;
