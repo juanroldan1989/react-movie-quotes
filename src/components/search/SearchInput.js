@@ -28,7 +28,7 @@ const SearchInput = (props) => {
     <form onSubmit={submitHandler}>
       <div className="row">
         <div className="form-group col-md-8">
-          <input onChange={searchButtonHandler} ref={searchRef} type="text" className="form-control form-control-lg" placeholder="there is no spoon ..." />
+          <input onChange={searchButtonHandler} ref={searchRef} type="text" className="form-control form-control-lg" placeholder="Airplane, western, I am your father ..." />
         </div>
         <div className="form-group col-md-4">
           <input disabled id="searchButton" type="submit" className="btn btn-lg btn-danger btn-block" value="Search" />
