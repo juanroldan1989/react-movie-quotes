@@ -2,6 +2,7 @@ import React from 'react';
 import RatingStars from '../quote/RatingStars';
 import QuoteImage from '../quote/QuoteImage';
 import PropTypes from 'prop-types';
+import ReactShowMoreText from 'react-show-more-text';
 
 // "functional" component (no state, no life-cycle, no `this`)
 // Also called "dumb", "stateless" or "presentational" components,
@@ -23,7 +24,11 @@ const SearchResult = (props) => {
 
           <div className="card-body">
             <RatingStars rating={parseInt(rating)} />
-            <p className="card-text">"{content}"</p>
+            <p className="card-text">
+              <ReactShowMoreText>
+                "{content}"
+              </ReactShowMoreText>
+            </p>
             <p className="card-text text-muted">{character.name} ({actor.name})</p>
           </div>
         </div>
