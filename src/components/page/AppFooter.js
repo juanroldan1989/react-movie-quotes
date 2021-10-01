@@ -3,8 +3,8 @@ import React from 'react';
 const AppFooter = () => {
   return (
     <React.Fragment>
-      <div className="footer">
-        <a href="http://juanroldan.com.ar/#portfolio" target="_blank">juanroldan.com.ar</a>
+      <div data-testid="footer-div" className="footer">
+        <a data-testid="footer-link" href="http://juanroldan.com.ar/#portfolio" target="_blank">juanroldan.com.ar</a>
       </div>
     </React.Fragment>
   )
