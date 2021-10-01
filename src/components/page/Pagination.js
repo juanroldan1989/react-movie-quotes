@@ -7,13 +7,13 @@ const Pagination = (props) => {
 
   const previousButton = () => {
     return (
-      <button onClick={previousPage} type="button" className="btn btn-info mr-1">&larr; Previous</button>
+      <button data-testid="previous-button" onClick={previousPage} type="button" className="btn btn-info mr-1">&larr; Previous</button>
     )
   }
 
   const nextButton = () => {
     return (
-      <button onClick={nextPage} type="button" className="btn btn-info">Next &rarr;</button>
+      <button data-testid="next-button" onClick={nextPage} type="button" className="btn btn-info">Next &rarr;</button>
     )
   }
 
