@@ -12,6 +12,7 @@ const QuoteImage = (props) => {
   return (
     <React.Fragment>
       <LazyLoadImage
+        data-testid="quote-image"
         alt={quote.movie}
         effect="blur"
         src={quote.image_large_url}
