@@ -4,7 +4,7 @@ const AppFooter = () => {
   return (
     <React.Fragment>
       <div data-testid="footer-div" className="footer">
-        <a data-testid="footer-link" href="http://juanroldan.com.ar/#portfolio" target="_blank">juanroldan.com.ar</a>
+        <a data-testid="footer-link" href="http://juanroldan.com.ar/#portfolio" target="blank">juanroldan.com.ar</a>
       </div>
     </React.Fragment>
   )
