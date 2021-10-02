@@ -10,6 +10,7 @@ const RatingStars = (props) => {
     <React.Fragment>
       <Box component="fieldset" mb={3} borderColor="transparent" className="box-rating-stars">
         <Rating
+          data-testid="rating-stars"
           name="read-only"
           value={props.rating}
           max={10}
