@@ -30,7 +30,6 @@ describe("Pagination", () => {
   describe("Pagination buttons when `onlyPreviousPage` prop is set", () => {
     it("should only contain `previous` button", () => {
       const queryByTestId = setup({ onlyPreviousPage: true });
-
       const nextButton = queryByTestId("next-button");
       const previousButton = queryByTestId("previous-button");
 
@@ -44,7 +43,6 @@ describe("Pagination", () => {
       "and `page` is different than `1`", () => {
         it("should contain both `previous` and `next` buttons", () => {
           const queryByTestId = setup({ page: 3 });
-
           const nextButton = queryByTestId("next-button");
           const previousButton = queryByTestId("previous-button");
 
