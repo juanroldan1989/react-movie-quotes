@@ -10,13 +10,19 @@ const SearchResults = (props) => {
     const quotesCounter = quotes.length;
     const singleResult = quotesCounter === 1;
 
-    if (query === "") return null;
+    if (query === "") {
+      return (
+        <React.Fragment>
+          <div data-testid="no-results"></div>
+        </React.Fragment>
+      )
+    }
 
     if ((quotesCounter === 0) && (query != "")) {
       if (page === 1) {
         return (
           <React.Fragment>
-            <div className="col-12">
+            <div data-testid="no-results" className="col-12">
               <h4>No results for "{query}"</h4>
             </div>
           </React.Fragment>
@@ -24,10 +30,10 @@ const SearchResults = (props) => {
       } else {
         return (
           <React.Fragment>
-            <div className="col-12">
+            <div data-testid="no-more-results" className="col-12">
               <h4>No more results for "{query}"</h4>
             </div>
-            <div className="col-12 row justify-content-center pagination">
+            <div data-testid="pagination" className="col-12 row justify-content-center pagination">
               <Pagination onlyPreviousPage={true} previousPage={previousPage} />
             </div>
           </React.Fragment>
@@ -37,14 +43,14 @@ const SearchResults = (props) => {
 
     return (
       <React.Fragment>
-        <div className="col-12 row">
-          {quotes.map(quote => ( 
+        <div data-testid="results" className="col-12 row">
+          {quotes.map(quote => (
             <ErrorBoundary key={quote.id}>
               <SearchResult quote={quote} singleResult={singleResult} />
             </ErrorBoundary>
           ))}
         </div>
-        <div className="col-12 row justify-content-center pagination">
+        <div data-testid="pagination" className="col-12 row justify-content-center pagination">
           <Pagination page={page} previousPage={previousPage} nextPage={nextPage} />
         </div>
       </React.Fragment>
