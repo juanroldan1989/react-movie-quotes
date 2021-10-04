@@ -12,7 +12,7 @@ const SearchResult = (props) => {
   const itemClassName = props.singleResult === true ? "col-lg-12" : "col-lg-4";
 
   return (
-    <div className={itemClassName}>
+    <div data-testid="quote-card" className={itemClassName}>
       <div className="bs-component">
         <div className="card mb-3">
           <div className="card-body">
