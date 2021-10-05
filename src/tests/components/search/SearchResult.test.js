@@ -7,7 +7,7 @@ describe("SearchResult", () => {
   const quote = {
     content: quoteContent,
     year: "1999",
-    movie: "The Matrix",
+    movie: { title: "The Matrix" },
     rating: "10",
     character: { name: "Agent Smith" },
     actor: { name: "Hugo Weaving" }

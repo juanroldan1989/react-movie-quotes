@@ -54,6 +54,7 @@ describe("SearchResults", () => {
     describe("and `quotesCounter` is not `0`", () => {
       it("should render results", () => {
         const quotes = [{
+          id: "1",
           content: "Hello Mr. Anderson",
           year: "1999",
           movie: "The Matrix",
