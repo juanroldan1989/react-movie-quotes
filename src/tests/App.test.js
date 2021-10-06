@@ -3,53 +3,55 @@ import { render, fireEvent } from "@testing-library/react";
 import App from "../App";
 
 describe("App", () => {
+  const { getByTestId, queryByTestId } = render(<App />);
+  const input = getByTestId("search-input");
+  const button = getByTestId("search-button");
+  const results = queryByTestId("results");
+
   describe("on page load", () => {
     it("should show empty search input", () => {
-      const { getByTestId } = render(<App />);
-      const input = getByTestId("search-input");
-
       expect(input).toBeTruthy();
     });
 
     it("should show disabled `search` button", () => {
-      const { getByTestId } = render(<App/>);
-      const button = getByTestId("search-button");
-
       expect(button).toBeTruthy();
       expect(button).toBeDisabled();
     });
 
     it("should not show any results", () => {
-      const { queryByTestId } = render(<App/>);
-      const results = queryByTestId("results");
-
       expect(results).not.toBeTruthy();
     });
   });
 
-  // describe("search input contains query", () => {
-  //   describe("and user clicks on `search` button", () => {
-  //     const { getByTestId, queryByTestId } = render(<App/>);
+  describe("search input contains query", () => {
+    describe("user clicks on `search` button", () => {
 
-  //     describe("and there are no results", () => {
-  //       it("should not show any results", () => {
-  //         const input = getByTestId("search-input");
-  //         const button = getByTestId("search-button");
-  //         const results = queryByTestId("results");
+      describe("API request triggered", () => {
+        describe("`searching` state is set to `true`", () => {
 
-  //         input.value = "something to search for ...";
+        });
+      });
 
-  //         fireEvent.click(button);
+      describe("API response received", () => {
+        describe("`searching` state is set to `false`", () => {
 
-  //         expect(results).not.toBeTruthy();
-  //       });
-  //     });
+        });
+        describe("without results", () => {
+          it("should not show any results", () => {
+            input.value = "something to search for ...";
 
-  //     describe("and there are results", () => {
-  //       it("should show results", () => {
+            fireEvent.click(button);
 
-  //       });
-  //     });
-  //   });
-  // });
+            expect(results).not.toBeTruthy();
+          });
+        });
+
+        describe("with results", () => {
+          it("should show results", () => {
+
+          });
+        })
+      });
+    });
+  });
 });
