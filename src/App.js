@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import AppInfo from './components/page/AppInfo';
 import AppFooter from './components/page/AppFooter';
 import './App.css';
+import Scroll from './components/page/Scroll';
+import FetchQuotes from './components/api/v1/FetchQuotes';
 
 const SearchResultsDiv = styled.div`
   display: ${props => props.searching ? 'none' : 'block'};
@@ -58,7 +60,7 @@ class App extends Component {
     this.setState({
       query: data
     }, () => { // callbacks
-      this.queryApi();
+      FetchQuotes(this, this.state.query, this.state.page);
     })
   }
 
@@ -79,8 +81,8 @@ class App extends Component {
     this.setState({
       page: page
     }, () => { // callbacks
-      this.queryApi();
-      this.scroll()
+      FetchQuotes(this, this.state.query, this.state.page);
+      Scroll();
     });
   }
 
@@ -92,14 +94,9 @@ class App extends Component {
     this.setState({
       page: page
     }, () => { // callbacks
-      this.queryApi();
-      this.scroll()
+      FetchQuotes(this, this.state.query, this.state.page);
+      Scroll();
     });
-  }
-
-  scroll = () => {
-    const header = document.querySelector('.jumbotron');
-    header.scrollIntoView('smooth', 'start');
   }
 
   searchStarted = () => {
@@ -114,19 +111,6 @@ class App extends Component {
 
     const searchButton = document.querySelector('#searchButton');
     searchButton.disabled = false;
-  }
-
-  queryApi = () => {
-    const query = this.state.query;
-    const page = this.state.page;
-    const url = `https://movie-quotes-app.herokuapp.com/api/v1/quotes?multiple=${query}&page=${page}`;
-
-    this.searchStarted();
-    fetch(url, { headers: { Authorization: `Token token=${process.env.REACT_APP_API_KEY}` } })
-      .then(results => results.json())
-      .then(results => this.setState({ quotes: results }))
-      .then(results => this.searchCompleted())
-      // .then(results => console.log(results))
   }
 
   render() {
