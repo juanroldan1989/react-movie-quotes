@@ -25,7 +25,7 @@ const SearchInput = (props) => {
   }
 
   return (
-    <form onSubmit={submitHandler}>
+    <form id="searchForm" onSubmit={submitHandler}>
       <div className="row">
         <div className="form-group col-md-8">
           <input data-testid="search-input" onChange={searchButtonHandler} ref={searchRef} type="text" className="form-control form-control-lg" placeholder="Airplane, western, I am your father ..." />
