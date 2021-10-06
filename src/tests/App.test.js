@@ -1,19 +1,16 @@
 import React from "react";
 import Enzyme from "enzyme";
+import { shallow, mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import { render, fireEvent } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
 import App from "../App";
-import { act } from "react-dom/test-utils";
+import axiosMock from "axios";
 
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("App", () => {
-  let wrapper;
-
   const { getByTestId, queryByTestId } = render(<App />);
-  const fakeSearchQuery = jest.fn();
-  const fakeQueryApi = jest.fn();
+  const apiKey = process.env.REACT_APP_API_KEY;
 
   let input = getByTestId("search-input");
   let button = getByTestId("search-button");
@@ -36,23 +33,31 @@ describe("App", () => {
 
   describe("search input contains query", () => {
     describe("user clicks on `search` button", () => {
-      wrapper = Enzyme.mount(<App searchQuery={fakeSearchQuery} queryApi={fakeQueryApi} />);
+      describe("API request initiated", () => {
+        it("should trigger GET request", (done) => {
+          let wrapper = mount(<App/>);
+          axiosMock.get.mockResolvedValue({data: [] });
 
-      describe("API request triggered", () => {
-        it("should call the proper function", async () => {
-          // await fireEvent.change(input, { target: { value: "something" } });
-          // await fireEvent.click(button);
-          // expect(fakeSearchQuery).toHaveBeenCalled();
-          // expect(fakeQueryApi).toHaveBeenCalled();
+          wrapper.instance().queryApi();
+
+          process.nextTick(()=>{
+            expect(axiosMock.get).toHaveBeenCalledTimes(1);
+            expect(axiosMock.get).toHaveBeenCalledWith(
+              "http://localhost:3000/api/v1/quotes?multiple=&page=1",
+              {"headers": {"Authorization": `Token token=${apiKey}`}}
+            );
+            done();
+          });
         });
 
-        // this should be placed within queryApi() own tests
-        // https://www.anthonygonzales.dev/blog/how-to-test-data-fetching-components.html#stub-the-environment-not-the-implementation
-        it("should set `searching` state to `true`", async () => {
+        it("should set `searching` state to `true`", async (done) => {
+          // APPROACH 1
+          // const wrapper = mount(<App/>, { disableLifecycleMethods: true });
+
           // await act(async () => {
           //   expect(wrapper.state().searching).toEqual(false);
 
-          //   fireEvent.change(input, { target: { value: "something" } });
+          //   await fireEvent.change(input, { target: { value: "something" } });
 
           //   expect(button).toBeEnabled();
 
@@ -60,6 +65,20 @@ describe("App", () => {
 
           //   expect(wrapper.state().searching).toEqual(true);
           // })
+
+          // APPROACH 2
+          let wrapper = mount(<App/>);
+
+          process.nextTick(()=>{
+            axiosMock.get.mockResolvedValue({data: [{ content: "first quote"}, { content: "second quote" }] });
+
+            expect(wrapper.instance()["state"]["searching"]).toEqual(false);
+
+            wrapper.instance().queryApi();
+
+            expect(wrapper.instance()["state"]["searching"]).toEqual(true);
+            done();
+          });
         });
 
         it("should disable search button", () => {
@@ -85,12 +104,26 @@ describe("App", () => {
         });
 
         describe("with results", () => {
-          it("should show results", () => {
+          it("should show results", (done) => {
             // input.value = "The matrix has you";
 
             // fireEvent.click(button);
 
             // expect(results).toBeTruthy();
+
+            // APPROACH 2
+            let wrapper = mount(<App/>);
+
+            process.nextTick(()=>{
+              axiosMock.get.mockResolvedValue({data: [{ content: "first quote"}, { content: "second quote" }] });
+
+              expect(wrapper.instance()["state"]["quotes"]).toEqual([]);
+
+              wrapper.instance().queryApi();
+
+              // expect(wrapper.instance()["state"]["quotes"]).toEqual([{ content: "first quote"}, { content: "second quote" }]);
+              done();
+            });
           });
         })
       });
