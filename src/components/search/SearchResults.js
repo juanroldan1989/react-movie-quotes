@@ -18,7 +18,7 @@ const SearchResults = (props) => {
       )
     }
 
-    if ((quotesCounter === 0) && (query != "")) {
+    if ((quotesCounter === 0) && (query !== "")) {
       if (page === 1) {
         return (
           <React.Fragment>
