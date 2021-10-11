@@ -2,7 +2,7 @@ import axios from "axios";
 import PropTypes from "prop-types";
 
 const FetchQuotes = async (query, page) => {
-  const url = `http://localhost:3000/api/v1/quotes?multiple=${query}&page=${page}`;
+  const url = `https://moviequotes.rocks/api/v1/quotes?multiple=${query}&page=${page}`;
   const apiKey = process.env.REACT_APP_API_KEY;
 
   if (toString(apiKey) === "") {
